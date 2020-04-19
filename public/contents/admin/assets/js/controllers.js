@@ -430,4 +430,211 @@ app.controller('semessageController', ["$rootScope", "$scope", "$http", "$timeou
 			$scope.validation2 = true;
 		}
 	};
+	
+	$scope.postprogress=function(){
+		if($scope.checkid_se.length !== 0){
+			$scope.validation2 = false;
+			$scope.processing= true;
+			var data ={
+				mess_id: $scope.checkid_se,
+			};
+			$http.post(post_url_se1, data)
+			.then(
+				function(response){
+					$scope.processing= false;
+					if(response.data.success[0] === "upload success"){
+						chatList();
+						$scope.chatlist_interval_se();
+						$scope.stopdiv= false;
+						$scope.checkid_se=[];
+						$scope.success_icon = true;
+						$scope.fail_icon = false;
+						$scope.modal_db ={
+							"display" : "block",
+							"animation" : "modal_ani .5s ease-out"
+						};
+						$timeout(function(){
+							$scope.modal_db = {
+								"display" : "block",
+								"animation" : "modal_ani_out .8s ease-out",
+								"transform" : "scale(0)"
+							};
+							$scope.circle_icon = null;
+							$scope.correct_icon = null;
+						}, 2000);
+						$timeout(function(){
+							$scope.modal_db = null;
+						}, 2500);
+					}
+				}, 
+				function(response){
+					$scope.processing= false;
+					var errors=response.data.errors[0];
+					if(errors === "upload error"){
+						$scope.success_icon = false;
+						$scope.fail_icon = true;
+						$scope.modal_db ={
+							"display" : "block",
+							"animation" : "modal_ani .5s ease-out"
+						};
+						$timeout(function(){
+							$scope.modal_db = {
+								"display" : "block",
+								"animation" : "modal_ani_out .8s ease-out",
+								"transform" : "scale(0)"
+							};
+							$scope.circle_icon = null;
+							$scope.correct_icon = null;
+						}, 2000);
+						$timeout(function(){
+							$scope.modal_db = null;
+						}, 2500);
+					} else {
+						$scope.validation = errors;
+					}
+				}
+			);
+		}else{
+			$scope.validation2 = true;
+		}
+	};
+	
+	$scope.postcomplete=function(){
+		if($scope.checkid_se.length !== 0){
+			$scope.validation2 = false;
+			$scope.processing= true;
+			var data ={
+				mess_id: $scope.checkid_se,
+			};
+			$http.post(post_url_se1, data)
+			.then(
+				function(response){
+					$scope.processing= false;
+					if(response.data.success[0] === "upload success"){
+						chatList();
+						$scope.chatlist_interval_se();
+						$scope.stopdiv= false;
+						$scope.checkid_se=[];
+						$scope.success_icon = true;
+						$scope.fail_icon = false;
+						$scope.modal_db ={
+							"display" : "block",
+							"animation" : "modal_ani .5s ease-out"
+						};
+						$timeout(function(){
+							$scope.modal_db = {
+								"display" : "block",
+								"animation" : "modal_ani_out .8s ease-out",
+								"transform" : "scale(0)"
+							};
+							$scope.circle_icon = null;
+							$scope.correct_icon = null;
+						}, 2000);
+						$timeout(function(){
+							$scope.modal_db = null;
+						}, 2500);
+					}
+				}, 
+				function(response){
+					$scope.processing= false;
+					var errors=response.data.errors[0];
+					if(errors === "upload error"){
+						$scope.success_icon = false;
+						$scope.fail_icon = true;
+						$scope.modal_db ={
+							"display" : "block",
+							"animation" : "modal_ani .5s ease-out"
+						};
+						$timeout(function(){
+							$scope.modal_db = {
+								"display" : "block",
+								"animation" : "modal_ani_out .8s ease-out",
+								"transform" : "scale(0)"
+							};
+							$scope.circle_icon = null;
+							$scope.correct_icon = null;
+						}, 2000);
+						$timeout(function(){
+							$scope.modal_db = null;
+						}, 2500);
+					} else {
+						$scope.validation = errors;
+						$scope.validation1 = errors2;
+					}
+				}
+			);
+		}else{
+			$scope.validation2 = true;
+		}
+	};
+	
+	$scope.postreprogress=function(){
+		if($scope.checkid_se.length !== 0){
+			$scope.validation2 = false;
+			$scope.processing= true;
+			var data ={
+				mess_id: $scope.checkid_se,
+			};
+			$http.post(post_url_se1, data)
+			.then(
+				function(response){
+					$scope.processing= false;
+					if(response.data.success[0] === "upload success"){
+						chatList();
+						$scope.chatlist_interval_se();
+						$scope.stopdiv= false;
+						$scope.checkid_se=[];
+						$scope.success_icon = true;
+						$scope.fail_icon = false;
+						$scope.modal_db ={
+							"display" : "block",
+							"animation" : "modal_ani .5s ease-out"
+						};
+						$timeout(function(){
+							$scope.modal_db = {
+								"display" : "block",
+								"animation" : "modal_ani_out .8s ease-out",
+								"transform" : "scale(0)"
+							};
+							$scope.circle_icon = null;
+							$scope.correct_icon = null;
+						}, 2000);
+						$timeout(function(){
+							$scope.modal_db = null;
+						}, 2500);
+					}
+				}, 
+				function(response){
+					$scope.processing= false;
+					var errors=response.data.errors[0];
+					var errors2=response.data.errors[1];
+					if(errors === "upload error"){
+						$scope.success_icon = false;
+						$scope.fail_icon = true;
+						$scope.modal_db ={
+							"display" : "block",
+							"animation" : "modal_ani .5s ease-out"
+						};
+						$timeout(function(){
+							$scope.modal_db = {
+								"display" : "block",
+								"animation" : "modal_ani_out .8s ease-out",
+								"transform" : "scale(0)"
+							};
+							$scope.circle_icon = null;
+							$scope.correct_icon = null;
+						}, 2000);
+						$timeout(function(){
+							$scope.modal_db = null;
+						}, 2500);
+					} else {
+						$scope.validation = errors;
+						$scope.validation1 = errors2;
+					}
+				}
+			);
+		}else{
+			$scope.validation2 = true;
+		}
+	};
 }]);

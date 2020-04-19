@@ -407,8 +407,7 @@ public function send_message($id, $unread, $sender, Request $request){
 	
 	
 	
-	public function multi_assign(Request $request){
-		//dd($request->all());
+	public function multi_assign(Request $request){());
 		$id= $request->input('mess_id');
 		$validator = Validator::make($request->all(),[
             'mess_id'=>'required',
@@ -420,7 +419,6 @@ public function send_message($id, $unread, $sender, Request $request){
 		
 		if($validator->fails()){
 			$errors = $validator->errors()->all();
-			//dd($errors);
             return response()->json(['errors' => $errors, 'status' => 400], 400);
 		}
 		
@@ -429,41 +427,50 @@ public function send_message($id, $unread, $sender, Request $request){
 			'updated_at'=>Carbon::now()->toDateTimeString(),
         ]);
         if ($ass) {
-            Session::flash('success_assign','value');
-            return redirect()->back();    
+            return response(['errors' => [], 'success' => ['upload success'], 'status' => 200], 200);
         }else{
-            Session::flash('error_assign','value');
-            return redirect()->back();
+			return response(['errors' => ['upload error'], 'success' => [],'status' => 200], 200);
         }
 	}
 	
 	public function assain_progressive(Request $request){
 		$id= $request->input('mess_id');
-		$this->validate($request,[
+		$validator = Validator::make($request->all(),[
             'mess_id'=>'required',
         ],[
             'mess_id.required'=>'Please select a Message',
 		]);
+		
+		if($validator->fails()){
+			$errors = $validator->errors()->all();
+            return response()->json(['errors' => $errors, 'status' => 400], 400);
+		}
+		
 		$ass= assign_facebook_message::whereIn("mess_id", $id)->update([
 			'progressive'=>'1',
 			'updated_at'=>Carbon::now()->toDateTimeString(),
         ]);
-        if ($ass) {
-            Session::flash('success_progressive','value');
-            return redirect()->back();    
+        
+		if ($ass) {
+            return response(['errors' => [], 'success' => ['upload success'], 'status' => 200], 200);
         }else{
-            Session::flash('error_progressive','value');
-            return redirect()->back();
+			return response(['errors' => ['upload error'], 'success' => [],'status' => 200], 200);
         }
 	}
 	
 	public function assain_complete(Request $request){
 		$id= $request->input('mess_id');
-		$this->validate($request,[
+		$validator = Validator::make($request->all(),[
             'mess_id'=>'required',
         ],[
             'mess_id.required'=>'Please select a Message',
 		]);
+		
+		if($validator->fails()){
+			$errors = $validator->errors()->all();
+            return response()->json(['errors' => $errors, 'status' => 400], 400);
+		}
+		
 		$ass=array();
 		$get= assign_facebook_message::whereIn("mess_id", $id)->get();
 		foreach($get as $gets){
@@ -486,11 +493,17 @@ public function send_message($id, $unread, $sender, Request $request){
 	
 	public function assain_reprogressive(Request $request){
 		$id= $request->input('mess_id');
-		$this->validate($request,[
+		$validator = Validator::make($request->all(),[
             'mess_id'=>'required',
         ],[
             'mess_id.required'=>'Please select a Message',
 		]);
+		
+		if($validator->fails()){
+			$errors = $validator->errors()->all();
+            return response()->json(['errors' => $errors, 'status' => 400], 400);
+		}
+		
 		$ass=array();
 		$get= assign_facebook_message::whereIn("mess_id", $id)->get();
 		foreach($get as $gets){
@@ -506,12 +519,11 @@ public function send_message($id, $unread, $sender, Request $request){
         ]);
         array_push($ass, $up);
 		}
+		
         if ($ass) {
-            Session::flash('success_progressive','value');
-            return redirect('admin/employee/client-message/progressive');    
+            return response(['errors' => [], 'success' => ['upload success'], 'status' => 200], 200);
         }else{
-            Session::flash('error_progressive','value');
-            return redirect()->back();
+			return response(['errors' => ['upload error'], 'success' => [],'status' => 200], 200);
         }
     }
 }
