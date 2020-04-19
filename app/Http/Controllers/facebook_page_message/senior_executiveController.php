@@ -483,11 +483,9 @@ public function send_message($id, $unread, $sender, Request $request){
         array_push($ass, $up);
 		}
         if ($ass) {
-            Session::flash('success_complete','value');
-            return redirect()->back();    
+            return response(['errors' => [], 'success' => ['upload success'], 'status' => 200], 200);
         }else{
-            Session::flash('error_complete','value');
-            return redirect()->back();
+			return response(['errors' => ['upload error'], 'success' => [],'status' => 200], 200);
         }
 	}
 	

@@ -318,18 +318,31 @@ app.controller('semessageController', ["$rootScope", "$scope", "$http", "$timeou
     var chat_se;
 	
 	$scope.chatlist_interval_se = function(){
+		$scope.stop_chatlist_interval_se();
+		
 		chat_se = $interval(function(){
 			chatList();
 		}, interval_time);
+		
 	};
+	
+	// stops the interval
+    $scope.stop_chatlist_interval_se = function() {
+		$interval.cancel(chat_se);
+        chat_se = undefined;
+    };
+	
 	$scope.chatlist_interval_se();
 	chatList();
+	$scope.$on('$destroy', function() {
+		$scope.stop_chatlist_interval_se();
+    });
 	/*ass();*/
 	
 	$scope.stop = function () {
 		if($rootScope.conversation_se.some(messages =>messages.selected === true)){
 			$interval.cancel(chat_se);
-            chat_se_se = undefined;
+            chat_se = undefined;
 			$scope.stopdiv= true;
 		}else{
 			$scope.stopdiv= false;
