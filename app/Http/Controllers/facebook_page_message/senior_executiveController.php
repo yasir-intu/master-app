@@ -407,7 +407,7 @@ public function send_message($id, $unread, $sender, Request $request){
 	
 	
 	
-	public function multi_assign(Request $request){());
+	public function multi_assign(Request $request){
 		$id= $request->input('mess_id');
 		$validator = Validator::make($request->all(),[
             'mess_id'=>'required',

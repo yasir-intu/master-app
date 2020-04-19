@@ -175,8 +175,6 @@ app.controller('mdmessageController', ["$rootScope", "$scope", "$http", "$timeou
 									"animation" : "modal_ani_out .8s ease-out",
 									"transform" : "scale(0)"
 								};
-								$scope.circle_icon = null;
-								$scope.correct_icon = null;
 							}, 2000);
 							$timeout(function(){
 								$scope.modal_db = null;
@@ -199,8 +197,6 @@ app.controller('mdmessageController', ["$rootScope", "$scope", "$http", "$timeou
 									"animation" : "modal_ani_out .8s ease-out",
 									"transform" : "scale(0)"
 								};
-								$scope.circle_icon = null;
-								$scope.correct_icon = null;
 							}, 2000);
 							$timeout(function(){
 								$scope.modal_db = null;
@@ -386,8 +382,6 @@ app.controller('semessageController', ["$rootScope", "$scope", "$http", "$timeou
 									"animation" : "modal_ani_out .8s ease-out",
 									"transform" : "scale(0)"
 								};
-								$scope.circle_icon = null;
-								$scope.correct_icon = null;
 							}, 2000);
 							$timeout(function(){
 								$scope.modal_db = null;
@@ -411,8 +405,6 @@ app.controller('semessageController', ["$rootScope", "$scope", "$http", "$timeou
 									"animation" : "modal_ani_out .8s ease-out",
 									"transform" : "scale(0)"
 								};
-								$scope.circle_icon = null;
-								$scope.correct_icon = null;
 							}, 2000);
 							$timeout(function(){
 								$scope.modal_db = null;
@@ -438,7 +430,7 @@ app.controller('semessageController', ["$rootScope", "$scope", "$http", "$timeou
 			var data ={
 				mess_id: $scope.checkid_se,
 			};
-			$http.post(post_url_se1, data)
+			$http.post(post_url_se2, data)
 			.then(
 				function(response){
 					$scope.processing= false;
@@ -459,8 +451,6 @@ app.controller('semessageController', ["$rootScope", "$scope", "$http", "$timeou
 								"animation" : "modal_ani_out .8s ease-out",
 								"transform" : "scale(0)"
 							};
-							$scope.circle_icon = null;
-							$scope.correct_icon = null;
 						}, 2000);
 						$timeout(function(){
 							$scope.modal_db = null;
@@ -483,8 +473,6 @@ app.controller('semessageController', ["$rootScope", "$scope", "$http", "$timeou
 								"animation" : "modal_ani_out .8s ease-out",
 								"transform" : "scale(0)"
 							};
-							$scope.circle_icon = null;
-							$scope.correct_icon = null;
 						}, 2000);
 						$timeout(function(){
 							$scope.modal_db = null;
@@ -506,7 +494,7 @@ app.controller('semessageController', ["$rootScope", "$scope", "$http", "$timeou
 			var data ={
 				mess_id: $scope.checkid_se,
 			};
-			$http.post(post_url_se1, data)
+			$http.post(post_url_se3, data)
 			.then(
 				function(response){
 					$scope.processing= false;
@@ -527,8 +515,6 @@ app.controller('semessageController', ["$rootScope", "$scope", "$http", "$timeou
 								"animation" : "modal_ani_out .8s ease-out",
 								"transform" : "scale(0)"
 							};
-							$scope.circle_icon = null;
-							$scope.correct_icon = null;
 						}, 2000);
 						$timeout(function(){
 							$scope.modal_db = null;
@@ -551,8 +537,6 @@ app.controller('semessageController', ["$rootScope", "$scope", "$http", "$timeou
 								"animation" : "modal_ani_out .8s ease-out",
 								"transform" : "scale(0)"
 							};
-							$scope.circle_icon = null;
-							$scope.correct_icon = null;
 						}, 2000);
 						$timeout(function(){
 							$scope.modal_db = null;
@@ -575,7 +559,7 @@ app.controller('semessageController', ["$rootScope", "$scope", "$http", "$timeou
 			var data ={
 				mess_id: $scope.checkid_se,
 			};
-			$http.post(post_url_se1, data)
+			$http.post(post_url_se4, data)
 			.then(
 				function(response){
 					$scope.processing= false;
@@ -596,8 +580,6 @@ app.controller('semessageController', ["$rootScope", "$scope", "$http", "$timeou
 								"animation" : "modal_ani_out .8s ease-out",
 								"transform" : "scale(0)"
 							};
-							$scope.circle_icon = null;
-							$scope.correct_icon = null;
 						}, 2000);
 						$timeout(function(){
 							$scope.modal_db = null;
@@ -621,8 +603,6 @@ app.controller('semessageController', ["$rootScope", "$scope", "$http", "$timeou
 								"animation" : "modal_ani_out .8s ease-out",
 								"transform" : "scale(0)"
 							};
-							$scope.circle_icon = null;
-							$scope.correct_icon = null;
 						}, 2000);
 						$timeout(function(){
 							$scope.modal_db = null;
