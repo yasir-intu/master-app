@@ -277,6 +277,8 @@ app.controller('semessageController', ["$rootScope", "$scope", "$http", "$timeou
 	$scope.ass_skip = 0;
 	function ass(skip){
 		$http.get(se1+"/"+skip).then(function (response){
+			var x = document.getElementById("select_e").scrollHeight-document.getElementById("select_e").offsetHeight;
+			document.getElementById("select_e").scrollTop = x;
 			$scope.IsLoading2 = false;
 			angular.forEach(response.data, function (asss) {
 				if($scope.assigning_se.findIndex(employee =>employee.id === asss.id) === -1){
@@ -287,11 +289,12 @@ app.controller('semessageController', ["$rootScope", "$scope", "$http", "$timeou
 	};
 	
 	function paging(){
-		if (((document.getElementById("select_e").scrollTop+document.getElementById("select_e").offsetHeight)-2) === document.getElementById("select_e").scrollHeight) {
-			$scope.IsLoading2 = true;
-			$scope.ass_skip = $scope.assigning_se.length;
-			ass($scope.ass_skip);
-		}
+		console.log((document.getElementById("select_e").scrollTop)+"==="+(document.getElementById("select_e").scrollHeight-document.getElementById("select_e").offsetHeight));
+			if (((document.getElementById("select_e").scrollTop+document.getElementById("select_e").offsetHeight)-2) === document.getElementById("select_e").scrollHeight) {
+				$scope.IsLoading2 = true;
+				$scope.ass_skip = $scope.assigning_se.length;
+				ass($scope.ass_skip);
+			};
 	};
 	
 	document.getElementById("select_e").onscroll = function() {paging()};

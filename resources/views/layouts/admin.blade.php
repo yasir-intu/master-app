@@ -77,6 +77,11 @@
 															  height:60px;
 															  position: relative;
 															}
+															
+															.spinner2 {
+															  width:25px;
+															  height:25px;
+															}
 
 															.spinner-dot {
 															  width:274px;
