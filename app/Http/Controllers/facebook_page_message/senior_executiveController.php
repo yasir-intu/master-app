@@ -24,7 +24,7 @@ class senior_executiveController extends Controller
 		return Auth::user()->executive->message()->with('employee')->get();
     }
 	public function ass1(){
-		return assign_facebook_message::all();
+		return Auth::user()->executive->employee;
     }
 	
 	public function view($id, $unread){

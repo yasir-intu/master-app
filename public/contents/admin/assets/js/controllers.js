@@ -273,46 +273,19 @@ app.controller('semessageController', ["$rootScope", "$scope", "$http", "$timeou
 		
 	};
 	
-	/*function paging(){
-		var interval_time = 60000;
-		if ((document.documentElement.scrollTop+document.documentElement.offsetHeight) == document.documentElement.scrollHeight) {
-			$scope.IsLoading = true;
-			$http.get($scope.paging[0]).then(function (response){
-				var next_list = response.data.data;
-				$scope.paging.splice(0, 1, response.data.paging.next);
-				angular.forEach(next_list, function (insert) {
-					insert.selected = false;							
-					if($rootScope.conversation.some(messages =>messages.senders.data[0].id === insert.senders.data[0].id)){
-						index = $rootScope.conversation.findIndex(messages =>messages.senders.data[0].id === insert.senders.data[0].id);
-						$rootScope.conversation.splice(index,1);									
-						$rootScope.conversation.push(insert);
-					} else{
-						$rootScope.conversation.push(insert);
-					}
-				});
-				angular.forEach($rootScope.conversation, function (message) { 
-					if($scope.id.indexOf(message.senders.data[0].id) === -1 ){
-						$scope.id.push(message.senders.data[0].id);
-						var interval_time = 120000;
-						$http.get(pro_url1+message.senders.data[0].id+pro_url2).then(function (response){
-							$scope.profile_pic.push(response.data);
-						});
-					}
-				});
-				$scope.IsLoading = false;
-			});
-		}
-	};
-	
-	window.onscroll = function() {paging()};
-	
 	function ass(){
 		$http.get(se1).then(function (response){
+			/*angular.forEach(response.data, function (asss) {
+				if($scope.assigning.findIndex(employee =>employee.id === asss.id) === -1){
+					
+				}
+			});*/
 			$scope.assigning = response.data;
 		});
-	};*/
+	};
 	
 	var interval_time = 2000;
+	var ass_interval_time = 4000;
 	
     //interval after given time in var interval_time
     var chat_se;
@@ -326,6 +299,10 @@ app.controller('semessageController', ["$rootScope", "$scope", "$http", "$timeou
 		
 	};
 	
+	$interval(function(){
+		//ass();
+	}, ass_interval_time);
+	
 	// stops the interval
     $scope.stop_chatlist_interval_se = function() {
 		$interval.cancel(chat_se);
@@ -334,10 +311,10 @@ app.controller('semessageController', ["$rootScope", "$scope", "$http", "$timeou
 	
 	$scope.chatlist_interval_se();
 	chatList();
+	ass();
 	$scope.$on('$destroy', function() {
 		$scope.stop_chatlist_interval_se();
     });
-	/*ass();*/
 	
 	$scope.stop = function () {
 		if($rootScope.conversation_se.some(messages =>messages.selected === true)){
