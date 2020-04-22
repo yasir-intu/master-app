@@ -23,8 +23,8 @@ class senior_executiveController extends Controller
 	public function ass(){
 		return Auth::user()->executive->message()->with('employee')->get();
     }
-	public function ass1(){
-		return Auth::user()->executive->employee;
+	public function ass1($skip){
+		return Auth::user()->executive->employee->skip($skip)->take(10);
     }
 	
 	public function view($id, $unread){

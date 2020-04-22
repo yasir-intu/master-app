@@ -25,7 +25,7 @@
 		var post_url_se3="{{route('facebook-page-message-senior-executive-assain-complete')}}";
 		var post_url_se4="{{route('facebook-page-message-senior-executive-assain-reprogressive')}}";
 		var se="{{route('facebook-page-message-senior-executive')}}";
-		var se1="{{route('facebook-page-message-senior-executive1')}}";
+		var se1="{{url('admin/senior-executive/client-message2/')}}";
 		</script>
 		<!--end::routes for aungularjs -->
 		

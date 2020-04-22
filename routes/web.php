@@ -89,7 +89,7 @@ Route::post('admin/client-message/multi/assign', 'facebook_page_message\facebook
 // admin Senior_executive facebook page message routes
 Route::get('admin/senior-executive/client-message', 'facebook_page_message\senior_executiveController@index')->name('');
 Route::get('admin/senior-executive/client-message1', 'facebook_page_message\senior_executiveController@ass')->name('facebook-page-message-senior-executive');
-Route::get('admin/senior-executive/client-message2', 'facebook_page_message\senior_executiveController@ass1')->name('facebook-page-message-senior-executive1');
+Route::get('admin/senior-executive/client-message2/{skip}', 'facebook_page_message\senior_executiveController@ass1')->name('facebook-page-message-senior-executive1');
 Route::get('admin/senior-executive/client-message/{id}/{unread}', 'facebook_page_message\senior_executiveController@view')->name('message-view-senior-executive');
 Route::post('admin/senior-executive/client-message/multi/e/assign', 'facebook_page_message\senior_executiveController@multi_assign')->name('facebook-page-message-senior-executive-assign-multi');
 Route::post('admin/senior-executive/client-message/assain/progressive', 'facebook_page_message\senior_executiveController@assain_progressive')->name('facebook-page-message-senior-executive-assain-progressive');

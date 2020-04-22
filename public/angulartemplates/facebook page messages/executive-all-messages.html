@@ -155,9 +155,16 @@
 									</span>
 									
 									<div style="position: absolute;transform: translate(-365%, 35%);height: 130px;">
-										<select name="multi_e" ng-model="e_se" class="form-control c-m-e" id="e" ng-class="{'border-danger' : assignForm.multi_e.$invalid && validation3}" onfocus='this.size=5;' onblur='this.size=1;' onchange='this.size=1; this.blur();' required>
+										<select name="multi_e" ng-model="e_se" class="form-control c-m-e" id="select_e" ng-class="{'border-danger' : assignForm.multi_e.$invalid && validation3}" onfocus='this.size=5;' onblur='this.size=1;' onchange='this.size=1; this.blur();' required>
 											<option value="">Select Employee</option>									
-											<option ng-repeat="es in assigning" data-id="{{es.se_id}}" value="{{es.id}}">{{es.name}}</option>
+											<option value="">Select Employee</option>									
+											<option value="">Select Employee</option>									
+											<option value="">Select Employee</option>									
+											<option value="">Select Employee</option>									
+											<option value="">Select Employee</option>									
+											<option value="">Select Employee</option>									
+											<option value="">Select Employee</option>									
+											<option ng-repeat="es in assigning_se" data-id="{{es.se_id}}" value="{{es.id}}">{{es.name}}</option>
 										</select>
 									</div>
 									<button  type="button" ng-click="postassign()" class="btn btn-brand btn-md btn-tall btn-wide btn-bold btn-upper">

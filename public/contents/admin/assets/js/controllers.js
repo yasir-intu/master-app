@@ -224,6 +224,7 @@ app.controller('semessageController', ["$rootScope", "$scope", "$http", "$timeou
 	$rootScope.conversation_se = [];
     $scope.profile_pic_se = [];
     $scope.id_se = [];
+	$scope.assigning_se = [];
 	$scope.paging = [];
 	$scope.checkid_se = [];
 	$scope.e_se=null;
@@ -231,7 +232,7 @@ app.controller('semessageController', ["$rootScope", "$scope", "$http", "$timeou
 	$scope.IsLoading = true;
 	
 	function chatList(){
-		
+		var interval_time = 120000
 		$http.get(se).then(function (response){
 			$scope.mess_se = response.data;
 			angular.forEach($scope.mess_se, function (mess) {
@@ -273,19 +274,29 @@ app.controller('semessageController', ["$rootScope", "$scope", "$http", "$timeou
 		
 	};
 	
-	function ass(){
-		$http.get(se1).then(function (response){
-			/*angular.forEach(response.data, function (asss) {
-				if($scope.assigning.findIndex(employee =>employee.id === asss.id) === -1){
-					
+	$scope.ass_skip = 0;
+	function ass(skip){
+		$http.get(se1+"/"+skip).then(function (response){
+			$scope.IsLoading2 = false;
+			angular.forEach(response.data, function (asss) {
+				if($scope.assigning_se.findIndex(employee =>employee.id === asss.id) === -1){
+					$scope.assigning_se.push(asss);
 				}
-			});*/
-			$scope.assigning = response.data;
+			});
 		});
 	};
 	
+	function paging(){
+		if (((document.getElementById("select_e").scrollTop+document.getElementById("select_e").offsetHeight)-2) === document.getElementById("select_e").scrollHeight) {
+			$scope.IsLoading2 = true;
+			$scope.ass_skip = $scope.assigning_se.length;
+			ass($scope.ass_skip);
+		}
+	};
+	
+	document.getElementById("select_e").onscroll = function() {paging()};
+	
 	var interval_time = 2000;
-	var ass_interval_time = 4000;
 	
     //interval after given time in var interval_time
     var chat_se;
@@ -299,10 +310,6 @@ app.controller('semessageController', ["$rootScope", "$scope", "$http", "$timeou
 		
 	};
 	
-	$interval(function(){
-		//ass();
-	}, ass_interval_time);
-	
 	// stops the interval
     $scope.stop_chatlist_interval_se = function() {
 		$interval.cancel(chat_se);
@@ -311,7 +318,7 @@ app.controller('semessageController', ["$rootScope", "$scope", "$http", "$timeou
 	
 	$scope.chatlist_interval_se();
 	chatList();
-	ass();
+	ass($scope.ass_skip);
 	$scope.$on('$destroy', function() {
 		$scope.stop_chatlist_interval_se();
     });
