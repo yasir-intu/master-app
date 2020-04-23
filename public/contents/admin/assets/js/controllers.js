@@ -227,7 +227,7 @@ app.controller('semessageController', ["$rootScope", "$scope", "$http", "$timeou
 	$scope.assigning_se = [];
 	$scope.paging = [];
 	$scope.checkid_se = [];
-	$scope.e_se=null;
+	$scope.e_se='-';
 	var interval_time = 2000;
 	$scope.IsLoading = true;
 	
@@ -353,7 +353,7 @@ app.controller('semessageController', ["$rootScope", "$scope", "$http", "$timeou
 	$scope.postassign=function(){
 		if($scope.checkid_se.length !== 0){
 			$scope.validation2 = false;
-			if($scope.e_se){
+			if($scope.e_se && $scope.e_se != '-'){
 				$scope.validation3 = false;
 				$scope.processing= true;
 				var data ={
