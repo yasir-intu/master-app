@@ -352,9 +352,9 @@ app.controller('semessageController', ["$rootScope", "$scope", "$http", "$timeou
 	
 	$scope.postassign=function(){
 		if($scope.checkid_se.length !== 0){
-			$scope.validation2 = false;
+			$scope.validation = false;
 			if($scope.e_se && $scope.e_se != '-'){
-				$scope.validation3 = false;
+				$scope.validation1 = false;
 				$scope.processing= true;
 				var data ={
 					multi_e: $scope.e_se,
@@ -416,16 +416,16 @@ app.controller('semessageController', ["$rootScope", "$scope", "$http", "$timeou
 				   }
 				);
 			}else{
-				$scope.validation3 = true;
+				$scope.validation1 = 'Please Enter a Employee';
 			}
 		}else{
-			$scope.validation2 = true;
+			$scope.validation = 'Please select a Message';
 		}
 	};
 	
 	$scope.postprogress=function(){
 		if($scope.checkid_se.length !== 0){
-			$scope.validation2 = false;
+			$scope.validation = false;
 			$scope.processing= true;
 			var data ={
 				mess_id: $scope.checkid_se,
@@ -483,13 +483,13 @@ app.controller('semessageController', ["$rootScope", "$scope", "$http", "$timeou
 				}
 			);
 		}else{
-			$scope.validation2 = true;
+			$scope.validation = 'Please select a Message';
 		}
 	};
 	
 	$scope.postcomplete=function(){
 		if($scope.checkid_se.length !== 0){
-			$scope.validation2 = false;
+			$scope.validation = false;
 			$scope.processing= true;
 			var data ={
 				mess_id: $scope.checkid_se,
@@ -548,13 +548,13 @@ app.controller('semessageController', ["$rootScope", "$scope", "$http", "$timeou
 				}
 			);
 		}else{
-			$scope.validation2 = true;
+			$scope.validation = 'Please select a Message';
 		}
 	};
 	
 	$scope.postreprogress=function(){
 		if($scope.checkid_se.length !== 0){
-			$scope.validation2 = false;
+			$scope.validation = false;
 			$scope.processing= true;
 			var data ={
 				mess_id: $scope.checkid_se,
@@ -614,7 +614,7 @@ app.controller('semessageController', ["$rootScope", "$scope", "$http", "$timeou
 				}
 			);
 		}else{
-			$scope.validation2 = true;
+			$scope.validation = 'Please select a Message';
 		}
 	};
 }]);
