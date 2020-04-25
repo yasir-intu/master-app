@@ -227,7 +227,7 @@ app.controller('semessageController', ["$rootScope", "$scope", "$http", "$timeou
 	$scope.assigning_se = [];
 	$scope.paging = [];
 	$scope.checkid_se = [];
-	$scope.e_se='-';
+	$scope.e_se = '-';
 	var interval_time = 2000;
 	$scope.IsLoading = true;
 	

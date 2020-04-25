@@ -140,7 +140,7 @@
 									</div>
 								</div>        
 								
-								<div class="kt-subheader__toolbar" id="assigning">
+								<div class="kt-subheader__toolbar" id="assigning" style="width: 82%;">
 									<span ng-show="validation" class="feedback mb-0 text-danger w-100" role="alert">
 										<strong>{{ validation }}</strong>
 									</span>
@@ -153,11 +153,13 @@
 									<span ng-show="validation3" class="feedback mb-0 text-danger w-100" role="alert">
 										<strong>Please Enter a Senior Executive</strong>
 									</span>
-									
-									<div style="position: absolute;transform: translate(-365%, 35%);height: 130px;">
+									<select class="form-control" style="width: 158px;opacity: 0;z-index: -9999;">
+										<option>select employee</option>
+									</select>
+									<div style="position: absolute;transform: translate(-298%, 35%);height: 130px;width: 158px;">
 										<select name="multi_e" ng-model="e_se" class="form-control c-m-e" id="select_e" ng-class="{'border-danger' : assignForm.multi_e.$invalid && validation3}" onfocus='this.size=5;' onblur='this.size=1;' onchange='this.size=1; this.blur();' required>
 											<option value="-">Select Employee</option>									
-											<option ng-repeat="es in assigning_se" data-id="{{es.se_id}}" value="{{es.id}}">{{es.name}}</option>
+											<option ng-repeat="es in assigning_se" data-id="{{es.se_id}}" value="{{es.id}}">{{es.name | str_limit:15}}</option>
 											<option style='padding: 15px;' ng-show="IsLoading2"></option>
 										</select>
 										<div style="text-align: center;padding-top: 5px;position: relative;bottom: 40px;right: 10px" ng-show="IsLoading2">
@@ -179,13 +181,13 @@
 									<button  type="button" ng-click="postassign()" class="btn btn-brand btn-md btn-tall btn-wide btn-bold btn-upper">
 										Submit
 									</button>
-									<button type="button" ng-click="postprogress()" class="btn btn-brand btn-md btn-tall btn-wide btn-bold btn-upper">
+									<button type="button" ng-click="postprogress()" class="btn btn-brand btn-md btn-tall btn-bold btn-upper">
 										Progressive
 									</button>
-									<button type="button" ng-click="postcomplete()" class="btn btn-brand btn-md btn-tall btn-wide btn-bold btn-upper">
+									<button type="button" ng-click="postcomplete()" class="btn btn-brand btn-md btn-tall btn-bold btn-upper">
 										Complete
 									</button>
-									<button type="button" ng-click="postreprogress()" class="btn btn-brand btn-md btn-tall btn-wide btn-bold btn-upper">
+									<button type="button" ng-click="postreprogress()" class="btn btn-brand btn-md btn-tall btn-bold btn-upper">
 										Reprogressive
 									</button>
 								</div>
