@@ -555,7 +555,6 @@ app.controller('semessageController', ["$rootScope", "$scope", "$http", "$timeou
 						}, 2500);
 					} else {
 						$scope.validation = errors;
-						$scope.validation1 = errors2;
 					}
 				}
 			);
@@ -603,7 +602,6 @@ app.controller('semessageController', ["$rootScope", "$scope", "$http", "$timeou
 				function(response){
 					$scope.processing= false;
 					var errors=response.data.errors[0];
-					var errors2=response.data.errors[1];
 					if(errors === "upload error"){
 						$scope.success_icon = false;
 						$scope.fail_icon = true;
@@ -625,7 +623,6 @@ app.controller('semessageController', ["$rootScope", "$scope", "$http", "$timeou
 						}, 2500);
 					} else {
 						$scope.validation = errors;
-						$scope.validation1 = errors2;
 					}
 				}
 			);
