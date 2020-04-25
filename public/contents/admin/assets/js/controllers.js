@@ -372,6 +372,8 @@ app.controller('semessageController', ["$rootScope", "$scope", "$http", "$timeou
 							$scope.e_se=null;
 							$scope.success_icon = true;
 							$scope.fail_icon = false;
+							$scope.icon_h5 = "Success!";
+							$scope.icon_p = "Assign Successfully Done!";
 							$scope.modal_db ={
 								"display" : "block",
 								"animation" : "modal_ani .5s ease-out"
@@ -389,12 +391,14 @@ app.controller('semessageController', ["$rootScope", "$scope", "$http", "$timeou
 						}
 					}, 
 				   function(response){
-					$scope.processing= false;
-					var errors=response.data.errors[0];
-					var errors2=response.data.errors[1];
-					if(errors === "upload error"){
-						 $scope.success_icon = false;
+						$scope.processing= false;
+						var errors=response.data.errors[0];
+						var errors2=response.data.errors[1];
+						if(errors === "upload error"){
+							$scope.success_icon = false;
 							$scope.fail_icon = true;
+							$scope.icon_h5 = "Failed!";
+							$scope.icon_p = "Assign failed! Please try again.";
 							$scope.modal_db ={
 								"display" : "block",
 								"animation" : "modal_ani .5s ease-out"
@@ -441,6 +445,8 @@ app.controller('semessageController', ["$rootScope", "$scope", "$http", "$timeou
 						$scope.checkid_se=[];
 						$scope.success_icon = true;
 						$scope.fail_icon = false;
+						$scope.icon_h5 = "Success!";
+						$scope.icon_p = "Adding Progressive Successfully Done!";
 						$scope.modal_db ={
 							"display" : "block",
 							"animation" : "modal_ani .5s ease-out"
@@ -463,6 +469,8 @@ app.controller('semessageController', ["$rootScope", "$scope", "$http", "$timeou
 					if(errors === "upload error"){
 						$scope.success_icon = false;
 						$scope.fail_icon = true;
+						$scope.icon_h5 = "Failed!";
+						$scope.icon_p = "Adding Progressive failed! Please try again.";
 						$scope.modal_db ={
 							"display" : "block",
 							"animation" : "modal_ani .5s ease-out"
@@ -505,6 +513,8 @@ app.controller('semessageController', ["$rootScope", "$scope", "$http", "$timeou
 						$scope.checkid_se=[];
 						$scope.success_icon = true;
 						$scope.fail_icon = false;
+						$scope.icon_h5 = "Success!";
+						$scope.icon_p = "Adding Completing Task Successfully Done!";
 						$scope.modal_db ={
 							"display" : "block",
 							"animation" : "modal_ani .5s ease-out"
@@ -527,6 +537,8 @@ app.controller('semessageController', ["$rootScope", "$scope", "$http", "$timeou
 					if(errors === "upload error"){
 						$scope.success_icon = false;
 						$scope.fail_icon = true;
+						$scope.icon_h5 = "Failed!";
+						$scope.icon_p = "Adding Completing Task! Please try again.";
 						$scope.modal_db ={
 							"display" : "block",
 							"animation" : "modal_ani .5s ease-out"
@@ -570,6 +582,8 @@ app.controller('semessageController', ["$rootScope", "$scope", "$http", "$timeou
 						$scope.checkid_se=[];
 						$scope.success_icon = true;
 						$scope.fail_icon = false;
+						$scope.icon_h5 = "Success!";
+						$scope.icon_p = "Adding Progressive Successfully Done!";
 						$scope.modal_db ={
 							"display" : "block",
 							"animation" : "modal_ani .5s ease-out"
@@ -593,6 +607,8 @@ app.controller('semessageController', ["$rootScope", "$scope", "$http", "$timeou
 					if(errors === "upload error"){
 						$scope.success_icon = false;
 						$scope.fail_icon = true;
+						$scope.icon_h5 = "Failed!";
+						$scope.icon_p = "Adding Reprogressive failed! Please try again.";
 						$scope.modal_db ={
 							"display" : "block",
 							"animation" : "modal_ani .5s ease-out"
