@@ -149,7 +149,7 @@
 										<option>select employee</option>
 									</select>
 									<div style="position: absolute;transform: translate(-298%, 35%);height: 130px;width: 158px;">
-										<select name="multi_e" ng-model="e_se" class="form-control c-m-e" id="select_e" ng-class="{'border-danger' : assignForm.multi_e.$invalid && validation1}" onfocus='this.size=5;' onblur='this.size=1;' onchange='this.size=1; this.blur();' required>
+										<select name="multi_e" ng-model="e_se" class="form-control c-m-e" id="select_e" ng-class="{'border-danger' : assignForm.multi_e.$invalid && validation1}" onfocus='this.size= 5;' onblur='this.size=1;' onchange='this.size=1; this.blur();' required>
 											<option value="-">Select Employee</option>									
 											<option ng-repeat="es in assigning_se" data-id="{{es.se_id}}" value="{{es.id}}">{{es.name | str_limit:15}}</option>
 											<option style='padding: 15px;' ng-show="IsLoading2"></option>

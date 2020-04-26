@@ -7,7 +7,6 @@ app.config(['$routeProvider', '$locationProvider',
     $routeProvider
 	  .when('/admin', {
         templateUrl: 'angulartemplates/dashboard/dashboard.html',
-        controller: 'mdmessageController',
 		authenticated: true,
       })
       .when('/admin/client-message', {

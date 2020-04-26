@@ -288,13 +288,14 @@ app.controller('semessageController', ["$rootScope", "$scope", "$http", "$timeou
 		});
 	};
 	
+	
+	
 	function paging(){
-		console.log((document.getElementById("select_e").scrollTop)+"==="+(document.getElementById("select_e").scrollHeight-document.getElementById("select_e").offsetHeight));
-			if (((document.getElementById("select_e").scrollTop+document.getElementById("select_e").offsetHeight)-2) === document.getElementById("select_e").scrollHeight) {
-				$scope.IsLoading2 = true;
-				$scope.ass_skip = $scope.assigning_se.length;
-				ass($scope.ass_skip);
-			};
+		if (((document.getElementById("select_e").scrollTop+document.getElementById("select_e").offsetHeight)-2) === document.getElementById("select_e").scrollHeight) {
+			$scope.IsLoading2 = true;
+			$scope.ass_skip = $scope.assigning_se.length;
+			ass($scope.ass_skip);
+		};
 	};
 	
 	document.getElementById("select_e").onscroll = function() {paging()};
