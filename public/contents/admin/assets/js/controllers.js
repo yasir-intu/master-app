@@ -218,14 +218,14 @@ app.controller('mdmessageController', ["$rootScope", "$scope", "$http", "$timeou
 //facebook messageController for senior executive
 app.controller('semessageController', ["$rootScope", "$scope", "$http", "$timeout", "$interval",
  function ($rootScope, $scope, $http, $timeout, $interval) {
-    var url="https://graph.facebook.com/v6.0/me?fields=conversations.limit(10){senders,messages.limit(1){message,attachments.limit(1){image_data,file_url,video_data,size,mime_type,name},sticker,shares.limit(1){description,link},created_time,from,to,tags},unread_count,message_count,id,snippet}&access_token=EAAGgwI3pjNsBANSXqQ7Ozl0x1aUQwRpZB8IgFIPFNUbkZB9ONjZCg9AiVxKjYQAsx1skNnv4dEt2niaF3gNjfXr61INZCnAuETnshIAIysEAjGuScqqmiwajDNA27aZCQZCLjRtkmBXb75cIOZB7MqUv0AQLqOZAb1BDbxoWcFy9lKEJo0G863H4Ms9fY07zlfIZD";
+    var url="https://graph.facebook.com/v6.0/";
+    var url1="?fields=senders,messages.limit(1){message,attachments.limit(1){image_data,file_url,video_data,size,mime_type,name},sticker,shares.limit(1){description,link},created_time,from,to,tags},unread_count,message_count,id,updated_time,snippet&access_token=EAAGgwI3pjNsBANSXqQ7Ozl0x1aUQwRpZB8IgFIPFNUbkZB9ONjZCg9AiVxKjYQAsx1skNnv4dEt2niaF3gNjfXr61INZCnAuETnshIAIysEAjGuScqqmiwajDNA27aZCQZCLjRtkmBXb75cIOZB7MqUv0AQLqOZAb1BDbxoWcFy9lKEJo0G863H4Ms9fY07zlfIZD";
 	var pro_url1="https://graph.facebook.com/v6.0/";
 	var pro_url2="?access_token=EAAGgwI3pjNsBANSXqQ7Ozl0x1aUQwRpZB8IgFIPFNUbkZB9ONjZCg9AiVxKjYQAsx1skNnv4dEt2niaF3gNjfXr61INZCnAuETnshIAIysEAjGuScqqmiwajDNA27aZCQZCLjRtkmBXb75cIOZB7MqUv0AQLqOZAb1BDbxoWcFy9lKEJo0G863H4Ms9fY07zlfIZD";
 	$rootScope.conversation_se = [];
     $scope.profile_pic_se = [];
     $scope.id_se = [];
 	$scope.assigning_se = [];
-	$scope.paging = [];
 	$scope.checkid_se = [];
 	$scope.e_se = '-';
 	var interval_time = 2000;
@@ -236,7 +236,7 @@ app.controller('semessageController', ["$rootScope", "$scope", "$http", "$timeou
 		$http.get(se).then(function (response){
 			$scope.mess_se = response.data;
 			angular.forEach($scope.mess_se, function (mess) {
-				$http.get('https://graph.facebook.com/v6.0/'+mess.mess_id+'?fields=senders,messages.limit(1){message,attachments.limit(1){image_data,file_url,video_data,size,mime_type,name},sticker,shares.limit(1){description,link},created_time,from,to,tags},unread_count,message_count,id,updated_time,snippet&access_token=EAAGgwI3pjNsBANSXqQ7Ozl0x1aUQwRpZB8IgFIPFNUbkZB9ONjZCg9AiVxKjYQAsx1skNnv4dEt2niaF3gNjfXr61INZCnAuETnshIAIysEAjGuScqqmiwajDNA27aZCQZCLjRtkmBXb75cIOZB7MqUv0AQLqOZAb1BDbxoWcFy9lKEJo0G863H4Ms9fY07zlfIZD').then(function (response){
+				$http.get(url+mess.mess_id+url1).then(function (response){
 					var message_se = response.data;
 					message_se.selected = false;
 					if($rootScope.conversation_se.some(messages =>messages.senders.data[0].id === message_se.senders.data[0].id)){
@@ -323,6 +323,7 @@ app.controller('semessageController', ["$rootScope", "$scope", "$http", "$timeou
 	$scope.chatlist_interval_se();
 	chatList();
 	ass($scope.ass_skip);
+	
 	$scope.$on('$destroy', function() {
 		$scope.stop_chatlist_interval_se();
     });
