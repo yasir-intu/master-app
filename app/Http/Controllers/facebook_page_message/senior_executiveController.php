@@ -20,9 +20,11 @@ class senior_executiveController extends Controller
     public function index(){
 		return view('layouts.admin');
     }
+	
 	public function ass(){
 		return Auth::user()->executive->message()->with('employee')->get();
     }
+	
 	public function ass1($skip){
 		return Auth::user()->executive->employee->skip($skip)->take(10);
     }

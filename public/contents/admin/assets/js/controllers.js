@@ -99,8 +99,6 @@ app.controller('mdmessageController', ["$rootScope", "$scope", "$http", "$timeou
 		});
 	};
 	
-	
-	
 	function ass_se_paging(){
 		if (((document.getElementById("select_e").scrollTop+document.getElementById("select_e").offsetHeight)-2) === document.getElementById("select_e").scrollHeight) {
 			$scope.IsLoading_se = true;
@@ -109,7 +107,7 @@ app.controller('mdmessageController', ["$rootScope", "$scope", "$http", "$timeou
 		};
 	};
 	
-	document.getElementById("select_e").onscroll = function() {paging()};
+	document.getElementById("select_e").onscroll = function() {ass_se_paging()};
 	
 	var interval_time = 2000;
 	
@@ -133,7 +131,8 @@ app.controller('mdmessageController', ["$rootScope", "$scope", "$http", "$timeou
 	
 	$scope.chatlist_interval();
 	chatList();
-	ass();
+	ass_se($scope.ass_se_skip);
+	
 	$scope.$on('$destroy', function() {
 		$scope.stop_chatlist_interval();
     });

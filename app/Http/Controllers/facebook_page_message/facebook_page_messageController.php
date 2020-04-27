@@ -26,18 +26,26 @@ class facebook_page_messageController extends Controller
         return view('layouts.admin');
     }
 	
-	public function assigning(){
-		$a=array();
+	public function assigning_se($skip){
+		
         if (Auth::user()->role_id == 1) {
-            $se=Senior_Executive::orderBy('dep_id', 'DESC')->get();
-            $e=Employee::orderBy('dep_id', 'DESC')->get();
+            $se=Senior_Executive::orderBy('dep_id', 'DESC')->skip($skip)->take(10);
         }else {
-            $se=Auth::user()->director->executive;
-            $e=Auth::user()->director->employee;
+            $se=Auth::user()->director->executive->skip($skip)->take(10);
         }
 		
-		array_push($a, $se, $e);
-		return $a;
+		return $se;
+    }
+	
+	public function assigning_e($skip){
+		
+        if (Auth::user()->role_id == 1) {
+            $e=Employee::orderBy('dep_id', 'DESC')->skip($skip)->take(10);
+        }else {
+            $e=Auth::user()->director->employee->skip($skip)->take(10);
+        }
+		
+		return $e;
     }
 	
 	public function assigning1(){

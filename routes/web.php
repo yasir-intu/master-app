@@ -72,7 +72,8 @@ Route::get('/admin/seniour-executive/all/employee', 'user\Senior_ExecutiveContro
 
 // admin facebook page message routes
 Route::get('admin/client-message', 'facebook_page_message\facebook_page_messageController@index')->name('facebook-page-message');
-Route::get('admin/client-message/assigning', 'facebook_page_message\facebook_page_messageController@assigning')->name('facebook-page-message-assigning');
+Route::get('admin/client-message/assigning/se/{skip}', 'facebook_page_message\facebook_page_messageController@assigning_se')->name('facebook-page-message-assigning-se');
+Route::get('admin/client-message/assigning/e/{skip}', 'facebook_page_message\facebook_page_messageController@assigning_e')->name('facebook-page-message-assigning-e');
 Route::get('admin/client-message/assigning1', 'facebook_page_message\facebook_page_messageController@assigning1')->name('facebook-page-message-assigning1');
 Route::get('admin/client-message/next-pagination/{after}', 'facebook_page_message\facebook_page_messageController@next')->name('facebook-page-message-next-pagination');
 Route::get('admin/client-message/prev-pagination/{before}', 'facebook_page_message\facebook_page_messageController@prev')->name('facebook-page-message-prev-pagination');
