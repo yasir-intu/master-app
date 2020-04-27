@@ -143,9 +143,9 @@ app.controller('mdmessageController', ["$rootScope", "$scope", "$http", "$timeou
 	
 	$scope.postassign=function(){
 		if($scope.checkid.length !== 0){
-			$scope.validation2 = false;
+			$scope.validation = false;
 			if($scope.se){
-				$scope.validation3 = false;
+				$scope.validation1 = false;
 				$scope.processing= true;
 				var data ={
 					multi_se: $scope.se,
@@ -165,6 +165,8 @@ app.controller('mdmessageController', ["$rootScope", "$scope", "$http", "$timeou
 							$scope.e=null;
 							$scope.success_icon = true;
 							$scope.fail_icon = false;
+							$scope.icon_h5 = "Success!";
+							$scope.icon_p = "Assign Successfully Done!";
 							$scope.modal_db ={
 								"display" : "block",
 								"animation" : "modal_ani .5s ease-out"
@@ -187,6 +189,8 @@ app.controller('mdmessageController', ["$rootScope", "$scope", "$http", "$timeou
 					 if(errors === "upload error"){
 						 $scope.success_icon = false;
 							$scope.fail_icon = true;
+							$scope.icon_h5 = "Failed!";
+							$scope.icon_p = "Assign failed! Please try again.";
 							$scope.modal_db ={
 								"display" : "block",
 								"animation" : "modal_ani .5s ease-out"
@@ -207,10 +211,10 @@ app.controller('mdmessageController', ["$rootScope", "$scope", "$http", "$timeou
 				   }
 				);
 			}else{
-				$scope.validation3 = true;
+				$scope.validation1 = 'Please Enter a Employee';
 			}
 		}else{
-			$scope.validation2 = true;
+			$scope.validation = 'Please select a Message';
 		}
 	};
 }]);
@@ -274,7 +278,7 @@ app.controller('semessageController', ["$rootScope", "$scope", "$http", "$timeou
 		
 	};
 	
-	$scope.ass_skip = 0;
+	$scope.ass_skip_se = 0;
 	function ass(skip){
 		$http.get(se1+"/"+skip).then(function (response){
 			var x = document.getElementById("select_e").scrollHeight-document.getElementById("select_e").offsetHeight;
@@ -293,8 +297,8 @@ app.controller('semessageController', ["$rootScope", "$scope", "$http", "$timeou
 	function paging(){
 		if (((document.getElementById("select_e").scrollTop+document.getElementById("select_e").offsetHeight)-2) === document.getElementById("select_e").scrollHeight) {
 			$scope.IsLoading2 = true;
-			$scope.ass_skip = $scope.assigning_se.length;
-			ass($scope.ass_skip);
+			$scope.ass_skip_se = $scope.assigning_se.length;
+			ass($scope.ass_skip_se);
 		};
 	};
 	
@@ -322,7 +326,7 @@ app.controller('semessageController', ["$rootScope", "$scope", "$http", "$timeou
 	
 	$scope.chatlist_interval_se();
 	chatList();
-	ass($scope.ass_skip);
+	ass($scope.ass_skip_se);
 	
 	$scope.$on('$destroy', function() {
 		$scope.stop_chatlist_interval_se();
