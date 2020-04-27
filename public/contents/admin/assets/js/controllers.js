@@ -85,15 +85,15 @@ app.controller('mdmessageController', ["$rootScope", "$scope", "$http", "$timeou
 	
 	window.onscroll = function() {paging()};
 	
-	$scope.ass_skip = 0;
-	function ass(skip){
-		$http.get(ass_url+"/"+skip).then(function (response){
+	$scope.ass_se_skip = 0;
+	function ass_se(skip){
+		$http.get(ass_se_url+"/"+skip).then(function (response){
 			var x = document.getElementById("select_e").scrollHeight-document.getElementById("select_e").offsetHeight;
 			document.getElementById("select_e").scrollTop = x;
 			$scope.IsLoading_se = false;
 			angular.forEach(response.data, function (asss) {
-				if($scope.assigning.findIndex(employee =>employee.id === asss.id) === -1){
-					$scope.assigning.push(asss);
+				if($scope.assigning_su_se.findIndex(employee =>employee.id === asss.id) === -1){
+					$scope.assigning_su_se.push(asss);
 				}
 			});
 		});
