@@ -101,11 +101,11 @@ app.controller('mdmessageController', ["$rootScope", "$scope", "$http", "$timeou
 	
 	
 	
-	function paging(){
+	function ass_se_paging(){
 		if (((document.getElementById("select_e").scrollTop+document.getElementById("select_e").offsetHeight)-2) === document.getElementById("select_e").scrollHeight) {
-			$scope.IsLoading2 = true;
-			$scope.ass_skip_se = $scope.assigning_se.length;
-			ass($scope.ass_skip_se);
+			$scope.IsLoading_se = true;
+			$scope.ass_se_skip = $scope.assigning_su_se.length;
+			ass_se($scope.ass_se_skip);
 		};
 	};
 	
